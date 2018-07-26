@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div class="center">
+      Front-end performance
+      <em>101</em>
+    </div>
+
+    <div class="reverse">Some insights before we start</div>
+
+    <div>Avg. page size is ever increasing</div>
+    <div class"imageText"><img src="http://chart.googleapis.com/chart?chd=t:-1|88,88,88,89,90,90,90,91,91,92,92,96,93,93,94,94,94,95,94,95,95,95,96,95,93,94,93,93,93,94,95,95,95,95,96,96,97,96,97,98,99,99,99,99,100,95,95,93,94,96,97,98,94,93,99,98,100,100,101,101,103,102,100,99,100,93,99,99,102,101,101,99,99,100,100,119,109,109,111,109,117,116,108,103,102,102,103,104,104,107,108,103,105,106,30,0,0,96,101,103,104,104,104,_,108,108,108,107,109|-1|1284,1280,1270,1292,1311,1335,1400,1411,1427,1448,1462,1466,1485,1492,1521,1532,1551,1585,1590,1617,1614,1653,1701,1682,1681,1687,1710,1703,1728,1739,1762,1765,1775,1783,1808,1829,1850,1821,1855,1860,1890,1899,1944,1925,1907,1953,1958,1931,1944,1977,1999,2008,1958,1950,2061,2062,2099,2087,2131,2135,2162,2161,2169,2167,2182,1976,2191,2194,2219,2219,2262,2232,2225,2253,2268,2393,2330,2331,2381,2312,2466,2486,2426,2406,2409,2435,2446,2481,2480,2552,2509,2473,2469,2479,648,0,0,2350,2476,2533,2569,2588,2602,_,2929,2959,2987,3034,3061&chxl=0:|1%2F13%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C7%2F13%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C1%2F14%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C7%2F14%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C1%2F15%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C7%2F15%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C1%2F16%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C7%2F16%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C1%2F17%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C+%7C7%2F17&chxt=x,y,r&chs=600x300&cht=lxy&chco=15A50E,006600&chm=N,15A50E,0,::12,12,,h::8|N**kB,006600,1,::12,12,,h::8&chds=9,99,0,300,9,99,0,4000&chts=006600,24&chtt=Total+Transfer+Size+%26+Total+Requests&chma=5,5,5,25&chls=1,6,3|1&chxr=1,0,4000,500|2,0,300,100&chxs=1,006600,11.5,-0.5,lt,006600,006600|2,15A50E,11.5,-0.5,lt,15A50E,15A50E&chxtc=0,4|1,4&chxp=0&chdl=Total+Requests|Total+Transfer+Size+(kB)&chdlp=bv|r" />
+      <!-- images too -->
+    </div>
+
+    <div>
+      In the past:
+      "Ship one less JPEG = JS is ok"
+      <!-- https://twitter.com/miketaylr/status/227056824275333120 -->
+    </div>
+
+    <div>
+      Present day:
+      <span class="nowrap">Webpack bundle: 400kb</span><br/>
+      JPEG: < 100kb
+    </div>
+
+
+    <div class="reverse">Two types of front-end perf:</div>
+    <div>Absolute <em>&amp;</em> Perceived</div>
+
+    <div>Absolute (or objective) performance</div>
+    <div>Anything that we can <em>measure</em> and then improve</div>
+    <div class="reverse">file size, load time</div>
+
+    <div>Let's break this overview into a few sections, ok?</div>
+
+    <div class="reverse">Requests</div>
+    <div>BEST RULE EVER:</div>
+    <div>Make as few request as possible</div>
+
+    <div>Know when to inline a resource</div>
+    <div>How often is it used? Is caching it more important than serving it fast?</div>
+    <div>In a nutshell: <em>measure</em></div>
+
+    <div>Minifying / Compression / GZIP</div>
+    <div class="nowrap">Cache-Control: max-age={seconds}</div>
+    <div>Hash and cache assets, <em>not pages</em></div>
+
+    <div>CDN</div>
+    <!-- Globally distributed servers, reduces latency -->
+
+    <div>The DNS dilemma</div>
+    <div class="center nowrap">
+      Single DNS = Not good parallelism<br/>
+      Several DNS = Too much DNS lookup
+    </div>
+    <div>The more files you have, the better having multiple serving domains is</div>
+
+    <div>HTTP/2</div>
+    <!-- multiple small files x proper compression -->
+
+    <div class="reverse">JS</div>
+    <div>Load javascript at the bottom of the page</div>
+    <div>(You have more important assets to load)</div>
+    <!-- <div>(And JS is download-blocking)</div> -->
+    <div>Ship less goddamn javascript.</div>
+    <!-- <div>Less dependencies</div> -->
+    <div>Use smaller alternatives</div>
+    <div>Just don't use the latest features for now</div>
+
+    <div class="reverse">CSS</div>
+    <div>
+      Serve it early
+      <span class="nowrap">(Because it's render blocking)</span>
+    </div>
+    <div>Serve it from the same domain (to avoid DNS lookup)</div>
+    <div>Inline the critical style</div>
+
+    <div class="reverse">Images</div>
+    <div>Serve the correct image type</div>
+    <div class"imageText"><img src="img/jpg.png" />
+      JPEG for millions of colors, photographs, etc
+    </div>
+    <div class"imageText"><img src="img/png.png" />
+      PNG when you need multiple colors AND a transparent background
+    </div>
+    <div class"imageText"><img src="https://media.giphy.com/media/L3SErI4p66UW4/giphy-downsized.gif" />
+      <del>GIF</del> video for dynamic content
+    </div>
+    <div class"imageText"><img src="img/svg.svg" />
+      SVG for icons / single color images / etc
+    </div>
+
+    <div>Prefer vector</div>
+    <div>Know that inline svg doesn't cache!</div>
+    <div>Use responsive images (when possible, with polyfills for now)</div>
+    <div>
+      <pre>
+        &lt;img src="small.jpg"
+          srcset="large.jpg 1024w, medium.jpg 640w, small.jpg 320w"
+          sizes="(min-width: 36em) 33.3vw, 100vw"
+          alt="A rad wolf"&gt;
+      </pre>
+    </div>
+    <div>Compress images (online or with tooling)</div>
+    <div class="nowrap">
+      Imagemin (CLI)<br/>
+      Imageoptim (OSX)<br/>
+    </div>
+    <div>Lazy load if not critical</div>
+
+    <div class="reverse">Fonts</div>
+    <div>Don't use custom fonts</div>
+    <div>Kidding. Use a font loader to avoid FOIT</div>
+    <!-- Flash of invisible text -->
+    <div>Use font subsetting WITH CARE</div>
+
+    <div class="reverse">Tooling</div>
+    <div>Webpagetest.org</div>
+    <!-- webpagetest images OR DEMO -->
+    <div>
+      Google Pagespeed<br/>
+      <span class="nowrap">Lighthouse (built into chrome as of v60)</span>
+    </div>
+    <!-- pagespeed image OR DEMO -->
+    <div>
+      Chrome developer tools (network / performance / audits)
+    </div>
+
+
+
+
+    <div class="reverse">Perceived performance</div>
+    <div>Anything that makes the user <em>think</em> what's happening is faster</div>
+
+    <div>
+      Time differences of 20% or less are imperceptible
+      <br/>
+      <br/>
+      <a href="http://torbit.com/blog/2011/11/29/psychology-of-software-performance/">Steve Seow, Microsoft</a>
+    </div>
+
+    <!-- <div>Resource prefetching</div>
+
+    <div>E.g. Use mousedown to load, execute on click (gives 100~150ms headstart)</div> -->
+
+    <!-- <div>Feedback should happen in under 100ms</div> -->
+
+    <div>Active Button animations: 150-200ms</div>
+
+    <!-- <div>Keep the user focus on other things while waiting</div> -->
+
+    <div>Any action taking less than 1 or so seconds doesn't need an indicator at all</div>
+    <div>Spinners for 1-2s actions</div>
+    <div>3s+: Let users know where they are in the waiting process. how long has it been, how long is left</div>
+    <div>Animate progress bars + use pattern that 'fills' in the opposite direction to give the fastest perception</div>
+
+    <div>Sequence loader animations to keep user attention. E.g. Slack</div>
+    <div><img src="http://assets.eli.wtf/talks/perceived-perf-talk/img/slack-loading.gif" alt="">
+      <!--  -->
+    </div>
+
+    <div>Load the CRITICAL part of the page first, lazy load the rest</div>
+    <div><img src="http://assets.eli.wtf/talks/perceived-perf-talk/img/amazon.jpg" alt="">
+      <!--  -->
+    </div>
+
+    <div>Predictive / optimistic rendering</div>
+    <!-- DEMO NEWSLETTER -->
+
+    <div class="reverse">Bottomline</div>
+    <!-- <div>Consider mobile first :)</div> -->
+    <div>Users don't care about your code / how beautiful / how interactive it is</div>
+    <div>They care about getting their task done</div>
+    <div>FAST</div>
+
+    <div>
+      References:<br>
+      <ul>
+        <li class="nowrap">
+          <a href="http://assets.eli.wtf/talks/perceived-perf-talk">Perceived Performance, by Eli Fitch</a>
+        </li>
+        <li class="nowrap">
+          <a href="https://www.smashingmagazine.com/2016/12/front-end-performance-checklist-2017-pdf-pages/">Frontend performance checklist</a>
+        </li>
+        <li class="nowrap">
+          <a href="http://httparchive.org/">http archive</a>
+        </li>
+        <li class="nowrap">
+          <a href="https://csswizardry.com/2013/01/front-end-performance-for-web-designers-and-front-end-developers/">Front end performance for web designers and front-end developers, by Harry Roberts</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
